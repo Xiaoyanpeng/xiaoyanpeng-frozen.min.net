@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>麦收网</title>
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="css/frozen.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/base.css">
+    <style>
+     .ui-scroller {width:auto;height:300px;margin:20px;padding:10px;overflow:hidden;border:1px solid #ccc;}
+     .ui-scroller li {margin-bottom:10px;}
+</style>
+</head>
+
+<body>
+    
+    <!--轮播图-->
+    <nav>
+        <div class="ui-slider">
+            <ul class="ui-slider-content">
+                <li class="current"><span style="background-image:url(images/1.jpg)"></span></li>
+                <li><span style="background-image:url(images/2.jpg)"></span></li>
+                <li><span style="background-image:url(images/3.jpg)"></span></li>
+                <li><span style="background-image:url(images/4.jpg)"></span></li>
+                <li><span style="background-image:url(images/5.jpg)"></span></li>
+            </ul>
+        </div>
+    </nav>
+    <header>
+       
+       <div class="ui-form-item ui-form-item-switch ui-border-b">
+            <p>
+                对附近的人可见
+            </p>
+            <label class="ui-switch">
+                <input type="checkbox" checked>
+            </label>
+        </div>
+
+        
+        
+    </header>
+
+    <section>
+        <div class="ui-center">
+            <div class="ui-btn" id="btn1">模板创建弹窗</div>
+            <div class="ui-btn" id="btn2">DOM创建弹窗</div>
+        </div>
+        <div class="ui-dialog">
+            <div class="ui-dialog-cnt">
+                <div class="ui-dialog-bd">
+                    <div>
+                    <h4>标题</h4>
+                    <div>内容</div></div>
+                </div>
+                <div class="ui-dialog-ft ui-btn-group">
+                    <button type="button" data-role="button"  class="select" id="dialogButton<%=i%>">关闭</button> 
+                </div>
+            </div>        
+        </div>
+
+    </section>
+    <footer>
+        <div class="ui-scroller">
+            <ul>
+                <li>1、活动时间：2014.09.25 - 2014.10.31</li>
+                <li>2、活动面向“预付费（Q点Q币、QQ卡、财付通/银行卡）开通超级QQ”的用户。以下支付方式的用户不 在本次活动范围内，“同时开通预付费超级QQ和短信版超级QQ”、“同时开通预付费超级QQ与短信版 会员”、“同时开通预付费超级QQ与iOS会员”、“开通短信版超级QQ”及“宽带/固定电话/超级/”（相关活动可留意超级QQ官网消息）。</li>
+                <li>3、活动中，成长值的转移规则：① QQ会员成长值 = 超级QQ成长值 -（超级QQ成长值/超级QQ成长速度）*（超级QQ成长速度 - 同条件下会员成长速度）② 若您在转移前同时开通了超级QQ和QQ会员，转移后会员成长值在上述成长值（超Q转换而来）与原会员成长值间取较高者。较低部分，转换成等值的QQ会员加倍成长卡赠送给您。</li>
+                <li>4、活动时间：2014.09.25 - 2014.10.311、活动间2014.09.25 - 2014.10.31、活动时间：  2014.09.25 -  活动时间活动时间活动时间  </li>
+            </ul>
+        </div>
+
+    </footer>
+    
+</body>
+<script src="js/lib/zepto.min.js"></script>
+<script src="js/frozen.js"></script>
+<script src="js/reset.js"></script>
+<script>
+    window.addEventListener('load', function(){
+        var slider = new fz.Scroll('.ui-slider', {
+            role: 'slider',
+            indicator: true,
+            autoplay: true,
+            interval: 2000,
+            bounce:true,
+            duration:1000,
+        });
+    })
+
+
+
+    $("#btn1").tap(function(){
+        var dia=$.dialog({
+            title:'温馨提示',
+            content:'温馨提示内容',
+            button:["确认","取消"]
+        });
+
+        dia.on("dialog:action",function(e){
+            console.log(e.index)
+        });
+        dia.on("dialog:hide",function(e){
+            console.log("dialog hide")
+        });
+
+    })
+    $("#btn2").tap(function(){
+        var dia2=$(".ui-dialog").dialog("show");
+        dia2.on("dialog:action",function(e){
+            console.log(e.index)
+        });
+    })
+   
+    var scroll = new fz.Scroll('.ui-scroller', {
+        scrollY: true
+    });
+    // scroll.scrollTo(0, 200);
+    // 若 offsetX 和 offsetY 都是 true，则滚动到元素位于屏幕中央的位置；
+    // scroll.scrollToElement("li:nth-child(3)", 1000, true, true);
+</script>
+</html>
